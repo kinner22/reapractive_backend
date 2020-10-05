@@ -11,5 +11,5 @@ user_data_index:
   methods: GET
 user_data_create:
   path: /user_data/create
-  controller: App\Controller\UserDataController::create
+  controller: App\Controller\UserDataController::createUserData
   methods: POST
