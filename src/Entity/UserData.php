@@ -9,7 +9,7 @@ use JsonSerializable;
 /**
  * @ORM\Entity(repositoryClass=UserDataRepository::class)
  */
-class UserData
+class UserData implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -72,5 +72,15 @@ class UserData
         $this->surname = $surname;
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'username' => $this->username
+        ];
     }
 }

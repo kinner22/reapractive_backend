@@ -20,6 +20,21 @@ class UserDataController extends AbstractController
 
     public function index()
     {
+        try {
+            $data = $this->userDataRepository->findAll();
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'status' => '404',
+                'data' => [
+                    'message' => $e->getMessage()
+                ]
+            ]);
+        }
+
+        return new JsonResponse([
+            'status' => '200',
+            'data' => $data
+        ]);
     }
 
 
